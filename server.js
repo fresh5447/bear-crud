@@ -16,19 +16,32 @@ app.get('/api/bears', function(req, res){
  
 app.get('/api/bear/:id', function(req, res){
 
-  var id = req.params.id;
+  var careBear = {title: 'no bear with that id'};
+  var id = Number(req.params.id);
 
-  var rightBear = {title: "no beer found... "}
+  bears.forEach(function(bear){
+    if(bear.id === id){
+      careBear = bear;
+    }
+  });
 
-  bears.forEach(function(b){
-    if(b.id.toString() === id.toString()){
-      rightBear = b;
+  res.json(careBear);
+
+});
+
+app.delete('/api/bear/:id', function(req, res){
+
+  var id = Number(req.params.id);
+  var index = '';
+
+  bears.forEach(function(bear){
+    if(bear.id === id){
+      index = bears.indexOf(bear);
     }
   })
 
-  res.json(rightBear);
-
-});
+  res.json(bears.splice(index, 1));
+})
 
 app.post('/api/bear', function(req, res){
   var newBear = {};
