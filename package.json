@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/fresh5447/bear-crud/issues"
   },
-  "homepage": "https://github.com/fresh5447/bear-crud#readme"
+  "homepage": "https://github.com/fresh5447/bear-crud#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
